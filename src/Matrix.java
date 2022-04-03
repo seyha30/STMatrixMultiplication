@@ -12,6 +12,7 @@ public class Matrix {
 	private int multiply[][];
 
 	public void createMatrix(int option) {
+		System.out.println("====> " + option);
 		if (option == 1) {
 			this.manualMatrix();
 		}
@@ -77,6 +78,16 @@ public class Matrix {
 
 	}
 
+	protected void setMatrixSize() {
+		System.out.println("Enter row num:");
+		Scanner scanner = new Scanner(System.in);
+		int r = scanner.nextInt();
+		setRow(r);
+		System.out.println("Enter col num");
+		int c = scanner.nextInt();
+		setCol(c);
+		
+	}
 	public int getRandomNumber1() {
 		return random.nextInt(3) + 1;
 	}
@@ -90,15 +101,5 @@ public class Matrix {
 		return col;
 	}
 
-	protected void setMatrixSize() {
-		System.out.println("Enter row num:");
-		Scanner scanner = new Scanner(System.in);
-		int r = scanner.nextInt();
-		setRow(r);
-		System.out.println("Enter col num");
-		int c = scanner.nextInt();
-		setCol(c);
-
-	}
 
 }
