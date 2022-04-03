@@ -35,7 +35,7 @@ public class Matrix {
 		for (int i = 0; i < arr1.length; i++) {
 			for (int j = 0; j < arr2.length; j++) {
 				multiply[i][j] = 0;
-				for (int k = 0; k < arr2.length; k++) {
+				for (int k = 0; k < arr2[0].length; k++) {
 					multiply[i][j] += arr1[i][k] * arr2[k][j];
 				} 
 			}
@@ -44,7 +44,7 @@ public class Matrix {
 	}
 
 	public void display() {
-		System.out.println("display Matrix" + Arrays.toString(multiply));
+		System.out.println("display Matrix" + Arrays.deepToString(multiply));
 	}
 
 	protected int getRandomNumber() {
@@ -87,9 +87,6 @@ public class Matrix {
 		int c = scanner.nextInt();
 		setCol(c);
 		
-	}
-	public int getRandomNumber1() {
-		return random.nextInt(3) + 1;
 	}
 
 
