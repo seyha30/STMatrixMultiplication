@@ -62,7 +62,6 @@ public class SingleThread {
 				matrix.multiply();
 				break;
 			case 4:
-				System.out.println(option);
 				loopBreaker = false;
 				break;
 

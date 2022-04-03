@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -29,7 +30,6 @@ public class Matrix {
 	}
 
 	public void multiply() {
-		display();
 		multiply = new int[arr1.length][arr2[0].length];
 		for (int i = 0; i < arr1.length; i++) {
 			for (int j = 0; j < arr2.length; j++) {
@@ -43,7 +43,7 @@ public class Matrix {
 	}
 
 	public void display() {
-		System.out.println("display Matrix" + multiply.toString());
+		System.out.println("display Matrix" + Arrays.toString(multiply));
 	}
 
 	protected int getRandomNumber() {
@@ -53,13 +53,13 @@ public class Matrix {
 
 	protected void autoMatrix() {
 		setMatrixSize();
-		Scanner s1 = new Scanner(System.in);
 		arr2 = new int[this.getRow()][this.getCol()];
 		for (int i = 0; i < this.getRow(); i++) {
 			for (int j = 0; j < this.getCol(); j++) {
 				arr2[i][j] = getRandomNumber();
 			}
 		}
+		System.out.println(Arrays.toString(this.arr2));
 
 	}
 
@@ -81,9 +81,6 @@ public class Matrix {
 		return random.nextInt(3) + 1;
 	}
 
-	public void setRandom(Random random) {
-		this.random = random;
-	}
 
 	public int getRow() {
 		return row;
@@ -95,12 +92,11 @@ public class Matrix {
 
 	protected void setMatrixSize() {
 		System.out.println("Enter row num:");
-		Scanner rowNum = new Scanner(System.in);
-		int r = rowNum.nextInt();
+		Scanner scanner = new Scanner(System.in);
+		int r = scanner.nextInt();
 		setRow(r);
 		System.out.println("Enter col num");
-		Scanner colNum = new Scanner(System.in);
-		int c = colNum.nextInt();
+		int c = scanner.nextInt();
 		setCol(c);
 
 	}
