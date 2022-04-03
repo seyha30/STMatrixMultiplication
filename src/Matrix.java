@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,16 +6,16 @@ public class Matrix {
 	private int row;
 	private int col;
 	private Random random;
-	private ArrayList<Integer[][]> matrices = new ArrayList<Integer[][]>();
 	private int arr1[][];
 	private int arr2[][];
+	private int multiply[][];
 
 	public void createMatrix(int option) {
 		if (option == 1) {
 			this.manualMatrix();
 		}
 		if (option == 2) {
-			this.manualMatrix();
+			this.autoMatrix();
 		}
 
 	}
@@ -30,11 +29,21 @@ public class Matrix {
 	}
 
 	public void multiply() {
-		System.out.println("multiply Matrix");
+		display();
+		multiply = new int[arr1.length][arr2[0].length];
+		for (int i = 0; i < arr1.length; i++) {
+			for (int j = 0; j < arr2.length; j++) {
+				multiply[i][j] = 0;
+				for (int k = 0; k < arr2.length; k++) {
+					multiply[i][j] += arr1[i][k] * arr2[k][j];
+				} 
+			}
+		}
+		this.display();
 	}
 
 	public void display() {
-		System.out.println("display Matrix");
+		System.out.println("display Matrix" + multiply.toString());
 	}
 
 	protected int getRandomNumber() {
@@ -66,8 +75,6 @@ public class Matrix {
 			}
 		}
 
-		System.out.println(" ok o  " + arr1.toString());
-
 	}
 
 	public int getRandomNumber1() {
@@ -76,14 +83,6 @@ public class Matrix {
 
 	public void setRandom(Random random) {
 		this.random = random;
-	}
-
-	public ArrayList<Integer[][]> getMatrices() {
-		return matrices;
-	}
-
-	public void setMatrices(ArrayList<Integer[][]> matrices) {
-		this.matrices = matrices;
 	}
 
 	public int getRow() {
