@@ -12,7 +12,6 @@ public class Matrix {
 	private int multiply[][];
 
 	public void createMatrix(int option) {
-		System.out.println("====> " + option);
 		if (option == 1) {
 			this.manualMatrix();
 		}
@@ -31,20 +30,25 @@ public class Matrix {
 	}
 
 	public void multiply() {
+		
+		if(arr1[0].length != arr2.length ) {
+			System.out.println("Can't multiply");
+			return;
+		}
 		multiply = new int[arr1.length][arr2[0].length];
 		for (int i = 0; i < arr1.length; i++) {
 			for (int j = 0; j < arr2.length; j++) {
 				multiply[i][j] = 0;
 				for (int k = 0; k < arr2[0].length; k++) {
 					multiply[i][j] += arr1[i][k] * arr2[k][j];
-				} 
+				}
 			}
 		}
-		this.display();
+		this.display(multiply);
 	}
 
-	public void display() {
-		System.out.println("display Matrix" + Arrays.deepToString(multiply));
+	public void display(int[][] matrix) {
+		System.out.println("Display Matrix" + Arrays.deepToString(multiply));
 	}
 
 	protected int getRandomNumber() {
@@ -60,7 +64,6 @@ public class Matrix {
 				arr2[i][j] = getRandomNumber();
 			}
 		}
-		System.out.println(Arrays.toString(this.arr2));
 
 	}
 
@@ -76,6 +79,8 @@ public class Matrix {
 			}
 		}
 
+		// System.out.println("annual matrix" + Arrays.deepToString(arr1));
+
 	}
 
 	protected void setMatrixSize() {
@@ -86,9 +91,8 @@ public class Matrix {
 		System.out.println("Enter col num");
 		int c = scanner.nextInt();
 		setCol(c);
-		
-	}
 
+	}
 
 	public int getRow() {
 		return row;
@@ -97,6 +101,5 @@ public class Matrix {
 	public int getCol() {
 		return col;
 	}
-
 
 }
